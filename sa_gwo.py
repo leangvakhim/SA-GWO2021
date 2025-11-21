@@ -1,12 +1,13 @@
 import numpy as np
 import math
+from tqdm import tqdm
 
 class sa_gwo:
     def __init__(self, model, pop_size, max_iter, t_start, cooling_rate):
         self.model = model
         self.pop_size = pop_size
         self.max_iter = max_iter
-        self.dim = model.num_sensors ** 2 # x and y for each sensor
+        self.dim = model.num_sensors * 2 # x and y for each sensor
 
         # sa parameters
         self.t = t_start
@@ -29,7 +30,7 @@ class sa_gwo:
     def optimize(self):
         convergence_curve = []
 
-        for t in range(self.max_iter):
+        for t in tqdm(range(self.max_iter), desc='SA-GWO Progress: '):
             # 1. calculate fitness and update alpha, beta and delta
             for i in range(self.pop_size):
                 # clip the area

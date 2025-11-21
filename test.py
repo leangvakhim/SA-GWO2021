@@ -6,11 +6,11 @@ from sa_gwo import sa_gwo
 
 width = 100.0
 height = 100.0
-num_sensors = 40
+num_sensors = 50
 radius = 10.0
 
 pop_size = 30
-max_iter = 200
+max_iter = 1000
 t_start = 1000.0
 cooling_rate = 0.98
 
@@ -42,7 +42,7 @@ for i in best_coords:
     ax.add_artist(circle)
     ax.plot(i[0], i[1], 'k.', markersize=4)
 
-plt.title(f"Deployment (coverage: {history[-1]:.4f})")
+plt.title(f"Deployment (coverage: {history[-1]*100 :.2f})")
 plt.xlabel('Width (m)')
 plt.ylabel('Height (m)')
 plt.grid(True, linestyle='--')
